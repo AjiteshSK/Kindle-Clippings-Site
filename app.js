@@ -7,11 +7,6 @@ const upload = multer({ dest: "uploads/" });
 
 const app = express();
 
-app.use((req, res, next) => {
-  console.log("REQUEST", req);
-  next();
-});
-
 app.post("/", upload.single("clipping"), (req, res, next) => {
   if (!req.file) {
     return res.status(400).json({ message: "No file upload detected" });
@@ -33,6 +28,6 @@ app.post("/", upload.single("clipping"), (req, res, next) => {
   );
 });
 
-app.listen(3000, () => {
+app.listen(8080, () => {
   console.log(`Server listening at port 3000 ...`);
 });
