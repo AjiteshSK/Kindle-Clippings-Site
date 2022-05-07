@@ -7,6 +7,19 @@ const upload = multer({ dest: "uploads/" });
 
 const app = express();
 
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "X-Requested-With,content-type, Accept"
+  );
+  next();
+});
+
 app.post("/", upload.single("clipping"), (req, res, next) => {
   if (!req.file) {
     return res.status(400).json({ message: "No file upload detected" });
