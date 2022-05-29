@@ -42,5 +42,5 @@ app.post("/", upload.single("clipping"), (req, res, next) => {
 });
 
 app.listen(8080, () => {
-  console.log(`Server listening at port 3000 ...`);
+  console.log(`Server listening at port 8080 ...`);
 });
