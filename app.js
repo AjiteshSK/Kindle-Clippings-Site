@@ -42,5 +42,6 @@ app.post("/", upload.single("clipping"), (req, res, next) => {
 });
 
 app.listen(8080, () => {
+  console.log("Version 2.0");
   console.log(`Server listening at port 8080 ...`);
 });

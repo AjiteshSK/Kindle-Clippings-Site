@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: kindle-clippings
+spec:
+  containers:
+    - name: kindle-clippings
+      image: ajiteshsk/kindlebackend
+      imagePullPolicy: Never

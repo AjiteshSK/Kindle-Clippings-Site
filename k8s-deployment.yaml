@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kindle-clippings-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels: 
+      alabel: kindle-clippings-depl
+  template:
+    metadata:
+      labels:
+        alabel: kindle-clippings-depl
+    spec:
+      containers:
+        - name: kindle-clippings-depl
+          image: ajiteshsk/kindlebackend
+          imagePullPolicy: Never
+---
+apiVersion: v1
+kind: Service
+metadata: 
+  name: kindle-clippings-clusterip
+spec:
+  selector:
+    alabel: kindle-clippings-depl
+  type: ClusterIP
+  ports:
+    - name: kindle-clippings-clusterip
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
